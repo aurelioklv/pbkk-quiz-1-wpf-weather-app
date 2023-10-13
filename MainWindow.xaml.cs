@@ -24,5 +24,35 @@ namespace WeatherAppWPF
         {
             InitializeComponent();
         }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void textblockSearch_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            textblockSearch.Focus();
+        }
+
+        private void textSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textblockSearch.Text) && textblockSearch.Text.Length > 0)
+            {
+                textblockSearch.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                textblockSearch.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void PowerButton_Click(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
